@@ -9,8 +9,14 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 
-app.get('/usuario', function(req, res) {
-    res.json('get usuario')
+app.get('/usuario/:id', function(req, res) {
+    // res.json('get usuario')
+
+    let id = req.params.id;
+    res.json({
+        tipo: 'put usuario',
+        id
+    })
 });
 app.post('/usuario', function(req, res) {
 
@@ -24,14 +30,12 @@ app.post('/usuario', function(req, res) {
         })
 
     } else {
-        res.json({
+        res.status(200).json({
             body
         })
     }
 
-    res.json({
-        body
-    })
+
 });
 app.put('/usuario/:id', function(req, res) {
 
